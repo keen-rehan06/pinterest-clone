@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     },
     username:{
         type:String,
-        required:true
+        required:true 
     },
     email:{
         type:String,
@@ -18,11 +18,16 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    post:[],
+    post:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"post"
+        }
+    ],
     dp:{
         type:String,
     }  
-})
+},{timestamps:true})
 
 const userModel = mongoose.model("user",userSchema);
 

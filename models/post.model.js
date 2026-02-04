@@ -6,7 +6,11 @@ const postSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    likes:[]
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"user"
+    },
+    likes:[]    
 },{timestamps:true})
 
 const postModel = mongoose.model("post",postSchema);
