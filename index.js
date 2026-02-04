@@ -2,7 +2,7 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import dotenv from "dotenv";
 import connectDb from "./db/connection.db.js"
-
+ 
 dotenv.config("./.env");
 
 (async () => {
@@ -13,7 +13,7 @@ dotenv.config("./.env");
         console.log("Failed to connect to MongoDB:", error);
         process.exit(1);
     }
-})()
+})();
 
 const app = express();
 
