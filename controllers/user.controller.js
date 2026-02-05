@@ -7,7 +7,7 @@ export const createUser = async(req,res) => {
     const user = await userModel.create({
           name:"Rehan Sheikh",
           username:"keen_rehan06",
-          email:"r@gmail.com",
+          email:"rehan@gmail.com",
           password:"123456789",
     })
     res.status(201).send(user);

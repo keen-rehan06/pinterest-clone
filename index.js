@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDb from "./db/connection.db.js";
 import userRoutes from "./routes/user.routes.js"
+import postRoutes from "./routes/post.routes.js"
  
 dotenv.config("./.env");
 
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use('/user',userRoutes);
+app.use('/post',postRoutes)
 
 
 app.get("/", function (req, res) {
