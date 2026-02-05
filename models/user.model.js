@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import plm from "passport-local-mongoose"
 
 const userSchema = new mongoose.Schema({
     name:{
@@ -29,6 +30,7 @@ const userSchema = new mongoose.Schema({
     }  
 },{timestamps:true})
 
+userSchema.plugin(plm)
 const userModel = mongoose.model("user",userSchema);
 
 export default userModel;
