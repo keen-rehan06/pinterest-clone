@@ -15,15 +15,12 @@ export const signUpUser = async (req, res) => {
     const newUser = await userModel.findById(user._id).select("-password");
     const token = generateToken(user);
     res.cookie("token", token);
-    res
-      .status(201)
-      .send({
-        message: `User ${user.name} Account has been created successfully!`,
-        data: newUser,
-      });
+    req.flash("success", "User Created Successfully!");
+    res.redirect("/login")
   } catch (error) {
     console.log(error   )
     console.log(error.message)
+    req.flash("error", "signup failed!");
     res.status(500).send({ message: `signUp failed!`, error });
   }
 };
@@ -31,27 +28,42 @@ export const signUpUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
+
     const user = await userModel.findOne({ email });
-    const newUser = await userModel.findById(user._id).select("-password");
+
     bcrypt.compare(password, user.password, async function (err, result) {
-      if (err)
-        return res.status(401).send({ message: `Something went wrong!`, err });
-      if (!result)
-        return res.status(500).send({ message: "Incorrect password!!" });
+
+      if (err){
+        req.flash("error","Something went wrong");
+        return res.redirect("/login");
+      }
+
+      if (!result){
+        req.flash("error", "User and Password is Incorrect!");
+        return res.redirect("/login");
+      }
+
       const token = generateToken(user);
       res.cookie("token", token);
-      res.render('profile')
+
+      req.flash("success", "Login Successfully!");
+      res.redirect("/profile");   
     });
+
   } catch (error) {
-    res.status(500).send({ message: `login failed!`, error });
+    req.flash("error", "Login Failed!");
+    res.redirect("/login");
   }
 };
 
 export const logoutUser = async (req, res) => {
     try {
           res.clearCookie("token")
+          req.flash("success", "User Logout!");
     res.status(200).send({message:"User Logout Successfully!!"})
     } catch (error) {
+      req.flash("error", "Logout Failed!");
         res.status(500).send({message:"Logout Failed!"})
     }
 };
+
