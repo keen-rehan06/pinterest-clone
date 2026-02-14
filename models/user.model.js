@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.model({
+const userSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true
@@ -17,8 +17,15 @@ const userSchema = new mongoose.model({
     password:{
         type:String,
         required:true
-    }
-})
+    },
+    dp:{
+        type:String,
+    },
+    post:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"post"
+    }]
+},{timestamps:true})
 
 const userModel = new mongoose.model("user",userSchema);
 
