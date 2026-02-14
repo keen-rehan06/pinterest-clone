@@ -5,17 +5,25 @@ const postSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-   user:{
+   user:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:"user"
+   }],
+   image:{
+    type:String,
+    required:true
    },
-    like:{
+    like:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"user",
         default:[]
-    },
+    }],
     date:{
         type:Date,
         default:Date.now()
     }
 })
+
+const postModel = new mongoose.model("post",postSchema);
+
+export default postModel;

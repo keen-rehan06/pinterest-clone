@@ -9,6 +9,7 @@ import session from "express-session"
 import flash from "connect-flash"
 import { isLoggedIn } from "./middlewares/auth.middleware.js";
 import userModel from "./models/user.model.js";
+import postRoute from "./routes/post.routes.js"
 dotenv.config('./.env');
 
 (async()=>{
@@ -41,6 +42,7 @@ app.use((req, res, next) => {
 app.use(cookieParser());
 app.set("view engine","ejs")
 app.use("/",userRoute)
+app.use("/",postRoute)
 
 app.get("/",function(req,res){
     res.render("index")
@@ -59,7 +61,7 @@ app.get("/profile",isLoggedIn,async function(req,res){
     res.render("profile",{
     error:req.flash("error"),
     success:req.flash("success"),
-    user
+    user,
   })
 })
 
