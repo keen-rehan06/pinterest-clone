@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import { fileURLToPath } from "url";
 import path from "path";
 import dotenv from "dotenv"
+import { isLoggedIn } from "./middlewares/auth.middleware.js";
 dotenv.config('./.env');
 
 (async()=>{
@@ -35,8 +36,12 @@ app.get("/login",function(req,res){
     res.render("login")
 })
 
-app.get("/feed",function(req,res){
+app.get("/feed",isLoggedIn,function(req,res){
     res.render("feed")
+})
+
+app.get("/profile",isLoggedIn,function(req,res){
+    res.render("profile")
 })
 
 app.listen(process.env.PORT,function(){

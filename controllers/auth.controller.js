@@ -40,7 +40,7 @@ export const loginUser = async (req, res) => {
         return res.status(500).send({ message: "Incorrect password!!" });
       const token = generateToken(user);
       res.cookie("token", token);
-      res.render('feed')
+      res.render('profile')
     });
   } catch (error) {
     res.status(500).send({ message: `login failed!`, error });

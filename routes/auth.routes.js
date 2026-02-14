@@ -5,6 +5,6 @@ const app = express.Router();
 
 app.post("/signup",signUpMiddleWare,signUpUser);
 app.post("/login",loginMiddleWare,loginUser);
-app.post("/logout",isLoggedIn,logoutUser);
+app.get("/logout",isLoggedIn,logoutUser);
 
 export default app;
