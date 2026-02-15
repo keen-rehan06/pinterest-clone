@@ -21,6 +21,8 @@ body {
 
 .contain{
     display: flex;
+    flex-wrap: wrap; 
+    align-items: start;
     margin-top: 20px;
     gap: 10px;
 }
@@ -60,6 +62,36 @@ body {
   display: inline-block;
   padding: 10px 20px;
   background-color: #f30d19;
+  color: #fff;
+  position: relative;
+    left: 600px;
+    bottom: 175px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.edit-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #eeece3;
+  color: #000;
+  position: relative;
+    left: 600px;
+    bottom: 175px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.data{
+  position: relative;
+  bottom: 40px;
+}
+
+.button-create{
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0d78f3;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;

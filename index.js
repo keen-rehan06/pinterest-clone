@@ -57,12 +57,18 @@ app.get("/feed",isLoggedIn,function(req,res){
 })
 
 app.get("/profile",isLoggedIn,async function(req,res){
-    const user = await userModel.findOne({email:req.user.email})
+    const user = await userModel.findOne({email:req.user.email}).populate("posts")
+    console.log(user);
+    console.log(user.posts)
     res.render("profile",{
-    error:req.flash("error"),
-    success:req.flash("success"),
-    user,
+        error:req.flash("error"),
+        success:req.flash("success"),
+        user,
   })
+})
+
+app.get("/post",isLoggedIn, function(req,res){
+    res.render("post")
 })
 
 app.listen(process.env.PORT,function(){

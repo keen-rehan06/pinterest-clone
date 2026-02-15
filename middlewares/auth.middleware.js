@@ -53,13 +53,12 @@ export const isLoggedIn = async (req,res,next) => {
 try {
   const token = req.cookies.token;
   console.log(token)
-
   if(!token){
     req.flash("error","Please login first");
+    res.status(401).send({message:"Please login first"})
     console.log(req.flash("error"))
     return res.redirect("/login")
   }
-
   const decoded = jwt.verify(token,process.env.JWT_SECRET);
   req.user = decoded
   next()

@@ -20,8 +20,13 @@ const userSchema = new mongoose.Schema({
     },
     dp:{
         type:String,
+        default:"https://media.istockphoto.com/id/1212674064/photo/one-man-on-busy-city-street-at-night-long-exposure-with-blurred-motion.webp?a=1&b=1&s=612x612&w=0&k=20&c=S3uDlS7G6wZrwYixJUh391aVIEMotrDMEf7u_-zzjzs="
     },
-    post:[{
+    description:{
+        type:String,
+        default:"description"
+    },
+    posts:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"post"
     }]

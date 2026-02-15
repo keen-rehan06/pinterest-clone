@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Post</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-black text-white flex items-center justify-center min-h-screen">
+
+<form action="/update" method="post" enctype="multipart/form-data" class="bg-zinc-800 p-6 rounded-xl w-96 space-y-4">
+
+    <h2 class="text-xl font-semibold text-center">Update Profile</h2>
+    <div>
+        <label class="block mb-2 text-sm">Upload Profile Image</label>
+        <input 
+            type="file"  
+            name="image" 
+            accept="image/*,video/*"
+            required
+            class="w-full text-sm bg-zinc-900 p-2 rounded-lg border border-zinc-700">
+    </div>
+
+<div>
+        <label class="block mb-2 text-sm">Name</label>
+        <input 
+            type="text" 
+            name="name" 
+            required
+            class="w-full text-sm bg-zinc-900 p-2 rounded-lg border border-zinc-700">
+    </div>
+
+    <div>
+        <label class="block mb-2 text-sm">Username</label>
+        <input 
+            type="text" 
+            name="username" 
+            required
+            class="w-full text-sm bg-zinc-900 p-2 rounded-lg border border-zinc-700">
+    </div>
+
+    <div>
+        <label class="block mb-2 text-sm">Bio</label>
+        <textarea 
+            name="postText"
+            rows="3"
+            placeholder="Write a caption..."
+            class="w-full bg-zinc-900 p-3 rounded-lg border border-zinc-700 outline-none resize-none"
+            required></textarea>
+    </div>
+    <input 
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 transition py-3 rounded-lg font-semibold" value="Post" />
+</form>
+
+</body>
+</html>

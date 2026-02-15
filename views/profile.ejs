@@ -12,43 +12,33 @@
 <body>
 
 <div class="containerpers">
-
-  <!-- 👇 ek hi flex container -->
   <div class="card-container">
-
-    <!-- profile card -->
     <div class="cardpers">
       <div class="profile-picture">
-        <img src="https://media.istockphoto.com/id/1212674064/photo/one-man-on-busy-city-street-at-night-long-exposure-with-blurred-motion.webp?a=1&b=1&s=612x612&w=0&k=20&c=S3uDlS7G6wZrwYixJUh391aVIEMotrDMEf7u_-zzjzs=">
+        <img src="<%= user.image %>">
       </div>
-      <h2 class="name"><%= user.name%></h2>
+      <a href="" class="edit-button"><b>Edit</b></a>
+      <a href="/login" class="button"><b>Logout</b></a>
+    <div class="data">
+        <h2 class="name"><%= user.name%></h2>
       <h3 class="username">@<%= user.username %></h3>
-      <p class="tagline">some tagline.</p>
-      <p class="description">description</p>
-      <a href="/login" class="button">Logout</a>
-
-      <form action="/profile" method="post" enctype="multipart/form-data">
-  <input type="file" name="image" />
-</form>
+      <p class="description"><%= user.description %></p>
+      <a href="/post" class="button-create">Create Post</a>
+    </div>
 
     </div>
 
     <div class="contain">
       
-    <div class="card" style="width:18rem;">
-      <img src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?w=500&auto=format&fit=crop&q=60" class="card-img-top">
+    <% user.posts.forEach((post)=>{ %>
+         <div class="card" style="width:18rem;">
+      <img src="/images/<%= post.image %>" class="card-img-top">
       <div class="card-body">
-        <h5 class="card-title">Programming</h5>
+        <h5 class="card-title"><%= post.postText %></h5>
       </div>
     </div>
+    <% }) %>
 
-
-    <div class="card" style="width:18rem;">
-      <img src="https://media.istockphoto.com/id/1403884032/photo/india-vs-pakistan-cricket-balls-with-flag.webp?a=1&b=1&s=612x612&w=0&k=20&c=IJSW8q6F6tynyE1bkq2RWWQnUhVtwuApN4TH2AnDm_M=" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">India vs Pakistan</h5>
-      </div>
-    </div>
     </div>
 
   </div>
