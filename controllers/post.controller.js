@@ -35,13 +35,12 @@ export const updateProfile = async(req,res) => {
   let updatedData = {
     name,
     username,
-    description
+    description,
   }
     if(req.file){
-      updatedData.image = req.file.filename
+      updatedData.dp = req.file.filename
     }
-
-   await userModel.findOneAndUpdate({email:req.user.email,updatedData,new:true});
+   await userModel.findOneAndUpdate({email:req.user.email},{$set:updatedData},{new:true});
     res.redirect("/profile");
  } catch (error) {
   console.log(error);

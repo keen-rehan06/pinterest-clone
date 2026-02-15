@@ -67,8 +67,9 @@ app.get("/profile",isLoggedIn,async function(req,res){
   })
 })
 
-app.get("/post",isLoggedIn, function(req,res){
-    res.render("post")
+app.get("/post",isLoggedIn, async function(req,res){
+    const user = await userModel.findOne({email:req.user.email})
+    res.render("post",{user})
 })
 
 app.listen(process.env.PORT,function(){
